@@ -1,0 +1,5 @@
+# Jaga agar berkas teks tetap LF di repo, kecuali .bat yang wajib CRLF di Windows.
+* text=auto
+*.bat text eol=crlf
+*.cmd text eol=crlf
+*.sh text eol=lf

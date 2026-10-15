@@ -1,0 +1,21 @@
+{
+  "name": "chat-app-server",
+  "version": "1.0.0",
+  "description": "Server chat multi-platform (Android / PC / CMD) — Node.js + WebSocket.",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node --watch server.js",
+    "test": "node test/keamanan.js && node test/offline.js && node test/uji-cli.js",
+    "test:simulasi": "node test/simulate.js",
+    "cli": "node cli.js"
+  },
+  "engines": {
+    "node": ">=22.5.0"
+  },
+  "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "express": "^4.19.2",
+    "ws": "^8.18.0"
+  }
+}

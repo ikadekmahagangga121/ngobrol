@@ -1,0 +1,108 @@
+========================================================
+ NGOBROL - KLIEN CHAT UNTUK PC / LAPTOP LAIN
+========================================================
+
+Folder ini bisa DISALIN ke PC mana saja (flashdisk, OneDrive,
+WhatsApp, dll). Isinya hanya 2 file penting:
+
+    CHAT-PC.bat   <- klik dua kali untuk mulai chat
+    cli.js        <- programnya (salinan dari server/cli.js)
+
+Tidak perlu npm install. Tidak perlu koneksi ke folder server.
+
+
+--------------------------------------------------------
+ SYARAT DI PC ITU
+--------------------------------------------------------
+
+1. Node.js terpasang.
+   Belum ada? Buka https://nodejs.org -> unduh versi "LTS" ->
+   install (klik Next sampai selesai). Sekali saja.
+   Kalau belum ada, CHAT-PC.bat akan memberi tahu sendiri.
+
+2. Bisa menjangkau server:
+   - Server di PC lain, 1 WiFi  -> alamat IP: http://192.168.1.4:8080
+   - Server online (Cloudflare) -> https://ngobrol-server.namamu.workers.dev
+
+
+--------------------------------------------------------
+ CARA PAKAI
+--------------------------------------------------------
+
+1. Pastikan server sudah jalan:
+   - server lokal  : di PC server, klik "1-JALANKAN-SERVER.bat"
+                     (jendela itu harus tetap terbuka)
+   - server online : tidak perlu apa-apa, selalu nyala
+
+2. Klik dua kali CHAT-PC.bat
+
+3. Tempel alamat server, tekan Enter.
+
+4. Masukkan username & password.
+   - Pertama kali: jawab "y" saat ditanya daftar akun baru.
+   - Sudah punya akun: langsung masuk.
+
+
+--------------------------------------------------------
+ PERINTAH DI DALAM CHAT
+--------------------------------------------------------
+
+   teks biasa            kirim ke room grup (semua orang)
+   /w <user> <pesan>     kirim pesan private
+   /users                lihat daftar pengguna + online/offline
+   /sandi                ganti kata sandi akunmu (perangkat lain keluar)
+   /help                 bantuan
+   /quit                 keluar
+
+
+--------------------------------------------------------
+ KALAU TIDAK BISA KONEK
+--------------------------------------------------------
+
+* "Gagal: fetch failed"
+  - Server lokal belum jalan, atau alamat salah.
+  - Pastikan pakai IP PC server (192.168.x.x), BUKAN 127.0.0.1.
+  - Pastikan kedua PC di WiFi/jaringan yang sama.
+
+* HP/PC lain tidak bisa masuk, tapi PC server sendiri bisa
+  - Windows Firewall memblokir. Di PC server, klik dua kali
+    "7-IZINKAN-FIREWALL.bat" (perlu izin Administrator).
+
+* Salah ketik alamat?
+  - Tutup jendela, jalankan CHAT-PC.bat lagi.
+
+* Alamat server Cloudflare tidak perlu /  di akhir.
+  Yang benar : https://ngobrol-server.namamu.workers.dev
+  Yang salah : https://ngobrol-server.namamu.workers.dev/
+
+
+--------------------------------------------------------
+ PENDEKATAN LAIN: UNDUH LANGSUNG DARI SERVER
+--------------------------------------------------------
+
+Folder ini TIDAK perlu disalin kalau PC-nya punya internet.
+Klien bisa diunduh langsung dari server:
+
+   curl -O https://ngobrol-server.namamu.workers.dev/cli.js
+   node cli.js --server https://ngobrol-server.namamu.workers.dev
+
+Di Termux (Android) sama saja, hanya perlu Node.js dulu:
+
+   pkg install nodejs
+   curl -O https://ngobrol-server.namamu.workers.dev/cli.js
+   node cli.js --server https://ngobrol-server.namamu.workers.dev
+
+Halaman utama server juga menampilkan perintah ini lengkap dengan
+alamat yang benar -- buka saja alamatnya di browser.
+
+
+--------------------------------------------------------
+ CATATAN
+--------------------------------------------------------
+
+* cli.js di folder ini adalah SALINAN dari server/cli.js.
+  Kalau nanti cli.js diperbarui, salin ulang file itu ke sini
+  (atau jalankan: cd cloudflare && npm run sync).
+
+* Bisa juga dijalankan dari Terminal/Termux tanpa .bat:
+      node cli.js --server http://192.168.1.4:8080

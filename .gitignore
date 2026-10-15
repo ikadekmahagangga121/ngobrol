@@ -1,0 +1,16 @@
+node_modules/
+data/
+dist/
+.wrangler/
+.mf-data/
+*.log
+
+# Jangan pernah ikut ke GitHub — rahasia/berkas besar
+*.apk
+*.db
+.env
+.dev.vars
+.wrangler/state/
+
+# ID gist GitHub (spesifik per akun, jangan dibagikan/di-commit)
+tools/gist-id.txt

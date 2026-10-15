@@ -1,0 +1,25 @@
+# Konfigurasi Cloudflare Workers untuk server chat "Ngobrol".
+#
+# Gratis selamanya, tanpa kartu kredit.
+# Deploy:  npx wrangler deploy
+
+name = "ngobrol-server"
+main = "src/index.js"
+compatibility_date = "2026-01-01"
+
+# Satu Durable Object bernama "ChatRoom" menyimpan:
+#   - seluruh koneksi WebSocket (realtime)
+#   - database SQLite (users, sessions, messages) — permanen
+[[durable_objects.bindings]]
+name = "CHAT"
+class_name = "ChatRoom"
+
+# Migrasi: pakai backend SQLite (tersedia di paket GRATIS Cloudflare).
+[[migrations]]
+tag = "v1"
+new_sqlite_classes = ["ChatRoom"]
+
+# Tautan cadangan untuk mengunduh cli.js — ditampilkan di halaman server.
+# Biarkan apa adanya, atau ganti kalau gist-nya berganti. Kosongkan ("") untuk menyembunyikan.
+[vars]
+CLI_GIST = "https://gist.githubusercontent.com/ikadekmahagangga121/562a3b59657f73a0976c31c73ea1018c/raw/cli.js"
