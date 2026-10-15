@@ -239,7 +239,7 @@ Ukuran yang dikirim hanya **±0,4 MB** (82 berkas kode & dokumen).
 perubahannya dikirim sebagai commit baru.
 
 > 🧪 Ingin mengetes tanpa internet sama sekali? `node tools/uji-github.js` —
-> memakai server GitHub tiruan dan repo git lokal (17 uji, tanpa token asli).
+> memakai server GitHub tiruan dan repo git lokal (18 uji, tanpa token asli).
 
 ## ⚙️ Perintah berguna
 
@@ -254,7 +254,7 @@ perubahannya dikirim sebagai commit baru.
 | `node tools/push-gist.js` | Taruh/perbarui `cli.js` di GitHub Gist (butuh `GITHUB_TOKEN`) |
 | `node tools/uji-gist.js` | Uji alat Gist di atas (pakai server tiruan, tanpa GitHub) |
 | `node tools/push-github.js` | Unggah seluruh kode ke GitHub (repo **privat**, butuh `GITHUB_TOKEN`) |
-| `node tools/uji-github.js` | Uji alat push GitHub + pemindai rahasia (17 uji, tanpa internet) |
+| `node tools/uji-github.js` | Uji alat push GitHub + pemindai rahasia (18 uji, tanpa internet) |
 
 > 🖼️ **Halaman server** (`/`) bisa dibuka di browser: menampilkan alamat server
 > dan perintah siap salin. Untuk server Cloudflare, tautan cadangan (gist)
