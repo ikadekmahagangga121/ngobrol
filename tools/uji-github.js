@@ -153,8 +153,13 @@ function jalankan(argumen, token) {
     gitDi(proyek, ['config', 'user.email']) === '4242+uji_user@users.noreply.github.com');
   cek('remote origin menunjuk repo yang benar',
     gitDi(proyek, ['remote', 'get-url', 'origin']) === 'https://github.com/uji_user/ngobrol-privat.git');
-  cek('commit benar-benar sampai ke tujuan',
-    gitDi(bare, ['log', '--oneline']).length > 0);
+  cek('commit benar-benar sampai ke cabang main di tujuan',
+    /^[0-9a-f]{40}$/m.test(gitDi(bare, ['rev-parse', '--verify', 'refs/heads/main'])));
+  const terkirim = gitDi(bare, ['ls-tree', '-r', '--name-only', 'main']).split('\n').filter(Boolean);
+  cek('isi repo tujuan lengkap (tanpa berkas rahasia)',
+    terkirim.includes('README.md') && terkirim.includes('server/cli.js') &&
+    !terkirim.includes('Ngobrol.apk') && !terkirim.includes('data/chat.db') && !terkirim.includes('tools/gist-id.txt'),
+    `terkirim=${terkirim.join(',')}`);
   cek('alamat repo ditampilkan ke pengguna', privat.keluaran.includes('https://github.com/uji_user/ngobrol-privat'));
   cek('token tidak pernah muncul di layar', !privat.keluaran.includes(TOKEN_BENAR));
 
